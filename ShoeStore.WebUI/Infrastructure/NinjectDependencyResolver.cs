@@ -1,4 +1,6 @@
 ﻿using Ninject;
+using ShoeStore.Domain.Abstract;
+using ShoeStore.Domain.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,7 @@ namespace ShoeStore.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            
+            kernel.Bind<IProductRepos>().To<ProductRepository>();
         }
 
         public object GetService(Type serviceType)

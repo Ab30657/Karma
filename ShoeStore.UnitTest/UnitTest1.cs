@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ShoeStore.Domain.Abstract;
+using Moq;
+using ShoeStore.WebUI.Controllers;
 
 namespace ShoeStore.UnitTest
 {
@@ -9,6 +13,7 @@ namespace ShoeStore.UnitTest
         [TestMethod]
         public void TestMethod1()
         {
+            
         }
     }
 }

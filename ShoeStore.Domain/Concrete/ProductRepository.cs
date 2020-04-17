@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShoeStore.Domain.Concrete
 {
-    public class EFProductRepository : IProductRepos
+    public class ProductRepository : IProductRepos
     {
         private EFDbContext context = new EFDbContext();
         public IEnumerable<Product> Products
