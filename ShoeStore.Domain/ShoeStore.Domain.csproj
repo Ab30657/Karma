@@ -73,6 +73,10 @@
     <Compile Include="Migrations\202004180934251_Nike.designer.cs">
       <DependentUpon>202004180934251_Nike.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004181554266_subcategoryaddition.cs" />
+    <Compile Include="Migrations\202004181554266_subcategoryaddition.designer.cs">
+      <DependentUpon>202004181554266_subcategoryaddition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004180934251_Nike.resx">
       <DependentUpon>202004180934251_Nike.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004181554266_subcategoryaddition.resx">
+      <DependentUpon>202004181554266_subcategoryaddition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

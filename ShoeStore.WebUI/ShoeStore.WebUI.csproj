@@ -458,12 +458,17 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BagController.cs" />
+    <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\FilterViewModel.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
+    <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -522,6 +527,10 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Store\Shop.cshtml" />
     <Content Include="Views\Bag\Index.cshtml" />
+    <Content Include="Views\Admin\Control.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Nav\CategoryMenu.cshtml" />
+    <Content Include="Views\Nav\ProductFilters.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -531,7 +540,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShoeStore.Domain\ShoeStore.Domain.csproj">

@@ -24,6 +24,9 @@ namespace ShoeStore.Domain.Entities
         [StringLength(50)]
         public string Category { get; set; }
 
+        [StringLength(50)]
+        public string SubCategory { get; set; }
+
         public string Description { get; set; }
 
         public decimal Price { get; set; }
