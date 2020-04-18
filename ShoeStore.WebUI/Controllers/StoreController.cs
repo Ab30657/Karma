@@ -16,10 +16,15 @@ namespace ShoeStore.WebUI.Controllers
         {
             repos = reposPara;
         }
-        public string Index()
+        public ActionResult Index()
         {
-
-            return (repos.Products.ToList()[0].Name);
+            return View();
         }
+
+        public ActionResult Shop()
+        {
+            return View();
+        }
+
     }
 }

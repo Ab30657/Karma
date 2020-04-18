@@ -56,6 +56,7 @@
     <Compile Include="Abstract\IProductRepos.cs" />
     <Compile Include="Concrete\EFDataInitializer.cs" />
     <Compile Include="Concrete\ProductRepository.cs" />
+    <Compile Include="Entities\Bag.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\CustomerPayment.cs" />
     <Compile Include="Entities\CustomerPurchaseLog.cs" />
@@ -68,6 +69,10 @@
     <Compile Include="Migrations\202004171545088_initial.designer.cs">
       <DependentUpon>202004171545088_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004180934251_Nike.cs" />
+    <Compile Include="Migrations\202004180934251_Nike.designer.cs">
+      <DependentUpon>202004180934251_Nike.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004171545088_initial.resx">
       <DependentUpon>202004171545088_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004180934251_Nike.resx">
+      <DependentUpon>202004180934251_Nike.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
