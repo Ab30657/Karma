@@ -21,12 +21,6 @@ namespace ShoeStore.Domain.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        [StringLength(50)]
-        public string Category { get; set; }
-
-        [StringLength(50)]
-        public string SubCategory { get; set; }
-
         public string Description { get; set; }
 
         public decimal Price { get; set; }
@@ -39,10 +33,18 @@ namespace ShoeStore.Domain.Entities
         [StringLength(50)]
         public string ImageMIMEType { get; set; }
 
+        public int? SubCategoryId { get; set; }
+
+        public int? CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerPurchaseLog> CustomerPurchaseLogs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VendorPurchaseLog> VendorPurchaseLogs { get; set; }
+
+        public virtual SubCategory SubCategory { get; set; }
     }
 }

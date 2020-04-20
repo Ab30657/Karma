@@ -1,4 +1,5 @@
 ﻿using ShoeStore.Domain.Abstract;
+using ShoeStore.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace ShoeStore.WebUI.Controllers
         // GET: Nav
         public PartialViewResult CategoryMenu()
         {
-            IEnumerable<string> categories= repos.Products.Select(x => x.Category).Distinct();
+            IEnumerable<Category> categories = repos.Categories;
             return PartialView(categories);
         }
 

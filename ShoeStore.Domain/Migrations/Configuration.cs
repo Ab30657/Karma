@@ -16,13 +16,13 @@
 
         protected override void Seed(ShoeStore.Domain.Concrete.EFDbContext context)
         {
-            var products = new List<Product>
-            {
-                new Product{ ProductId=1, Name="Nike Max", Description="Nice Shoes" , Category="Nike", Price=200.00m, Quantity=200},
-                new Product{ ProductId=1, Name="Nike Air", Description="Nice Shoes" , Category="Nike", Price=400.00m, Quantity=300}
-            };
+            //var products = new List<Product>
+            //{
+            //    new Product{ ProductId=1, Name="Nike Max", Description="Nice Shoes" , CategoryId=1,SubCategoryId=1, Price=200.00m, Quantity=200},
+            //    new Product{ ProductId=1, Name="Nike Air", Description="Nice Shoes" , CategoryId=1,SubCategoryId=1, Price=400.00m, Quantity=300}
+            //};
 
-            products.ForEach(x => context.Products.AddOrUpdate(c => c.ProductId, x));
+            //products.ForEach(x => context.Products.AddOrUpdate(c => c.ProductId, x));
         }
     }
 }

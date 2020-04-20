@@ -12,6 +12,7 @@ namespace ShoeStore.Domain.Abstract
     public interface IProductRepos
     {
         IEnumerable<Product> Products { get; }
+        IEnumerable<Category> Categories { get; }
     }
             
 }

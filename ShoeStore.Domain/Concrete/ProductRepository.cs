@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace ShoeStore.Domain.Concrete
 {
@@ -14,6 +15,10 @@ namespace ShoeStore.Domain.Concrete
         public IEnumerable<Product> Products
         {
             get { return context.Products; }
+        }
+        public IEnumerable<Category> Categories
+        {
+            get { return context.Categories.Include(x=>x.SubCategories); }
         }
     }
 }

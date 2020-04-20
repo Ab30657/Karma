@@ -57,11 +57,13 @@
     <Compile Include="Concrete\EFDataInitializer.cs" />
     <Compile Include="Concrete\ProductRepository.cs" />
     <Compile Include="Entities\Bag.cs" />
+    <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\CustomerPayment.cs" />
     <Compile Include="Entities\CustomerPurchaseLog.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\SubCategory.cs" />
     <Compile Include="Entities\Vendor.cs" />
     <Compile Include="Entities\VendorPayment.cs" />
     <Compile Include="Entities\VendorPurchaseLog.cs" />
@@ -76,6 +78,18 @@
     <Compile Include="Migrations\202004181554266_subcategoryaddition.cs" />
     <Compile Include="Migrations\202004181554266_subcategoryaddition.designer.cs">
       <DependentUpon>202004181554266_subcategoryaddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004200812009_Cat_SubCat.cs" />
+    <Compile Include="Migrations\202004200812009_Cat_SubCat.designer.cs">
+      <DependentUpon>202004200812009_Cat_SubCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004200834538_ProductId.cs" />
+    <Compile Include="Migrations\202004200834538_ProductId.designer.cs">
+      <DependentUpon>202004200834538_ProductId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004200841583_nullabless.cs" />
+    <Compile Include="Migrations\202004200841583_nullabless.designer.cs">
+      <DependentUpon>202004200841583_nullabless.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +107,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004181554266_subcategoryaddition.resx">
       <DependentUpon>202004181554266_subcategoryaddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004200812009_Cat_SubCat.resx">
+      <DependentUpon>202004200812009_Cat_SubCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004200834538_ProductId.resx">
+      <DependentUpon>202004200834538_ProductId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004200841583_nullabless.resx">
+      <DependentUpon>202004200841583_nullabless.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

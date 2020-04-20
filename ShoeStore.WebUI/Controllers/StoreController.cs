@@ -27,10 +27,10 @@ namespace ShoeStore.WebUI.Controllers
         {
             ProductListViewModel viewModel = new ProductListViewModel
             {
-                Products = repos.Products.Where(x => (selectedCategory == null || selectedCategory == x.Category) && (selectedSubCategory == null || selectedSubCategory == x.SubCategory)).OrderBy(x => x.ProductId).Skip((page - 1) * 6),
+                Products = repos.Products.Where(x => (selectedCategory == null || selectedCategory == x.Category.CategoryName) && (selectedSubCategory == null || selectedSubCategory == x.SubCategory.Name)).OrderBy(x => x.ProductId).Skip((page - 1) * 6),
                 PageViewModel = new PageViewModel
                 {
-                    TotalItems = repos.Products.Where(x => (selectedCategory == null || selectedCategory == x.Category) && (selectedSubCategory == null || selectedSubCategory == x.SubCategory)).Count(),
+                    TotalItems = repos.Products.Where(x => (selectedCategory == null || selectedCategory == x.Category.CategoryName) && (selectedSubCategory == null || selectedSubCategory == x.SubCategory.Name)).Count(),
                     CurrentPage=page,
                     ItemsPerPage=6// Opt for Change
                 },

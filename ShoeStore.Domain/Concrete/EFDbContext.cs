@@ -12,7 +12,7 @@ namespace ShoeStore.Domain.Concrete
             : base("name=ShoeStore")
         {
         }
-
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerPayment> CustomerPayments { get; set; }
         public virtual DbSet<CustomerPurchaseLog> CustomerPurchaseLogs { get; set; }
@@ -20,9 +20,19 @@ namespace ShoeStore.Domain.Concrete
         public virtual DbSet<Vendor> Vendors { get; set; }
         public virtual DbSet<VendorPayment> VendorPayments { get; set; }
         public virtual DbSet<VendorPurchaseLog> VendorPurchaseLogs { get; set; }
-
+        public virtual DbSet<SubCategory> SubCategories { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Category>()
+                .HasMany(e => e.Products)
+                .WithOptional(e => e.Category)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<SubCategory>()
+                .HasMany(e => e.Products)
+                .WithOptional(e => e.SubCategory)
+                .WillCascadeOnDelete();
+
             modelBuilder.Entity<Customer>()
                 .HasMany(e => e.CustomerPayments)
                 .WithOptional(e => e.Customer)
