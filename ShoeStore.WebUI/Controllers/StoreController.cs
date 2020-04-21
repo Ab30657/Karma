@@ -44,5 +44,15 @@ namespace ShoeStore.WebUI.Controllers
             return View(viewModel);
         }
 
+        public FileContentResult GetFile(int productId)
+        {
+            Product product = repos.Products.FirstOrDefault(x => x.ProductId == productId);
+            if (product != null)
+            {
+                return File(product.Image, product.ImageMIMEType);
+            }
+            else { return null; }
+        }
+
     }
 }

@@ -20,7 +20,7 @@ namespace ShoeStore.WebUI
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //Database.SetInitializer(new EFDataInitializer());
+            Database.SetInitializer(new EFDataInitializer());
             //Git testing 123
         }
     }

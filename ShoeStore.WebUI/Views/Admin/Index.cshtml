@@ -1,0 +1,71 @@
+﻿@using ShoeStore.Domain.Entities
+@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>List of Products</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Control Panel<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Product Details</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+            <div class="sidebar-categories">
+                <div class="head">Options</div>
+                <ul class="main-categories">
+                    <li class="main-nav-list"><a href="">Add a Product<span class="ti-plus"></span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+            <section class="lattest-product-area pb-40 category-list">
+                <div class="row">
+                    <div class="col-12">
+                        @foreach (var product in Model)
+                        {
+                            <div class="single-product">
+                                <img class="img-fluid" src="~/Content/img/product/p1.jpg">
+                                <div class="product-details">
+                                    <h6>
+                                        @product.Description
+                                    </h6>
+                                    <div class="price">
+                                        <h6>@product.Price.ToString("C")</h6>
+                                    </div>
+                                    <div class="prd-bottom">
+                                        <a href="" class="social-info">
+                                            <span class="ti-settings"></span>
+                                            <p class="hover-text">Edit Product</p>
+                                        </a>
+                                        <a href="" class="social-info">
+                                            <span class="lnr lnr-eye"></span>
+                                            <p class="hover-text">Details</p>
+                                        </a>
+                                        <a href="" class="social-info">
+                                            <span class="ti-trash"></span>
+                                            <p class="hover-text">Delete</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
