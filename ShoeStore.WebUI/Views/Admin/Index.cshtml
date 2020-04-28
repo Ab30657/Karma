@@ -5,7 +5,55 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script>
+    var model = {
+        products: ko.observableArray(),
+        editor: {
+            name: ko.observable(""),
+            description: ko.observable("")
+        }
+    };
 
+    function sendAjaxRequest(httpMethod, callback, url,reqData) {
+        $.ajax("/api/web" + (url ? "/" + url : ""), {
+            type: httpMethod, success: callback, data:reqData
+        });
+    }
+
+    function handleEditorClick() {
+        sendAjaxRequest("POST", function (newItem) {
+            model.products.push(newItem);
+        }, null, {
+                Name: model.editor.name,
+                description: model.editor.description
+        });
+    }
+
+    function getAllItems() {
+        sendAjaxRequest("GET", function (data) {
+            model.products.removeAll();
+            for (var i = 0; i < data.length; i++) {
+                model.products.push(data[i]);
+            }
+        });
+    }
+
+    function removeItem(item) {
+        sendAjaxRequest("DELETE", function () {
+            for (var i = 0; i < model.products.length; i++) {
+                if (model.products[i].ProductId == item.ProductId) {
+                    model.products.remove(model.products()[i]);
+                    break;
+                }
+            }
+        }, item.ProductId);
+    }
+
+    $(document).ready(function () {
+        getAllItems();
+        ko.applyBindings(model);
+    })
+</script>
 <section class="banner-area organic-breadcrumb">
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
@@ -13,7 +61,7 @@
                 <h1>List of Products</h1>
                 <nav class="d-flex align-items-center">
                     <a href="index.html">Control Panel<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="#">Product Details</a>
+                    <a href="#">Product List</a>
                 </nav>
             </div>
         </div>
@@ -34,34 +82,58 @@
             <section class="lattest-product-area pb-40 category-list">
                 <div class="row">
                     <div class="col-12">
-                        @foreach (var product in Model)
-                        {
-                            <div class="single-product">
-                                <img class="img-fluid" src="~/Content/img/product/p1.jpg">
-                                <div class="product-details">
-                                    <h6>
-                                        @product.Description
-                                    </h6>
-                                    <div class="price">
-                                        <h6>@product.Price.ToString("C")</h6>
-                                    </div>
-                                    <div class="prd-bottom">
-                                        <a href="" class="social-info">
-                                            <span class="ti-settings"></span>
-                                            <p class="hover-text">Edit Product</p>
-                                        </a>
-                                        <a href="" class="social-info">
-                                            <span class="lnr lnr-eye"></span>
-                                            <p class="hover-text">Details</p>
-                                        </a>
-                                        <a href="" class="social-info">
-                                            <span class="ti-trash"></span>
-                                            <p class="hover-text">Delete</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        }
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                   <th scope="col">Name</th>
+                                   <th scope="col">Price</th>
+                                   <th scope="col">Description</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: model.products">
+                                <tr>
+                                    <td data-bind="text: ProductId"></td>
+                                    <td data-bind="text: Name"></td>
+                                    <td data-bind="text: Description"></td>
+                                    <td>
+                                        <div class="single-product">
+                                            <div class="product-details">
+                                                <div class="prd-bottom">
+                                                    <a href="@Url.Action("Edit","Admin",new {productId=product.ProductId })" class="social-info">
+                                                        <span class="ti-settings"></span>
+                                                        <p class="hover-text">Edit</p>
+                                                    </a>
+                                                    <a href="" class="social-info">
+                                                        <span class="lnr lnr-eye"></span>
+                                                        <p class="hover-text">Details</p>
+                                                    </a>
+                                                    <a href="" class="social-info" data-bind="click: removeItem">
+                                                        <span class="ti-trash"></span>
+                                                        <p class="hover-text">Delete</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>*@
+                                    @*<td>
+                                        <div class="single-product">
+                                            <img class="img-fluid" src="~/Content/img/product/p1.jpg">
+                                            <div class="product-details">
+                                                <h6>
+                                                    @product.Description
+                                                </h6>
+                                                <div class="price">
+                                                    <h6>@product.Price.ToString("C")</h6>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </td>*@
+                                @*</tr>*@
+                                @*}*@
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
@@ -69,3 +141,72 @@
     </div>
 </div>
 
+<div id="editor">
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Edit Product Page</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Control Panel<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">Product List<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="single-product.html">Product Details</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="product_image_area">
+        <div class="container">
+            <div class="row s_product_inner">
+                <div class="col-lg-6">
+                    <div class="s_Product_carousel">
+                        <div class="single-prd-item">
+                            <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                        </div>
+                        <div class="single-prd-item">
+                            <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                        </div>
+                        <div class="single-prd-item">
+                            <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="s_product_text">
+                        <h3>Faded SkyBlu Denim Jeans</h3>
+                        <h2>$149.99</h2>
+                        <ul class="list">
+                            <li><a class="active" href="#"><span>Category</span> : Household</a></li>
+                            <li><a href="#"><span>Availibility</span> : In Stock</a></li>
+                        </ul>
+                        <p>
+                            Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
+                            something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
+                            during the winter.
+                        </p>
+                        <div class="product_count">
+                            <label for="qty">Quantity:</label>
+                            <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                    class="increase items-count" type="button">
+                                <i class="lnr lnr-chevron-up"></i>
+                            </button>
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                    class="reduced items-count" type="button">
+                                <i class="lnr lnr-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="card_area d-flex align-items-center">
+                            <a class="primary-btn" href="#">Add to Cart</a>
+                            <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+                            <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

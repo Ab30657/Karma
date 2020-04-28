@@ -13,6 +13,11 @@ namespace ShoeStore.Domain.Abstract
     {
         IEnumerable<Product> Products { get; }
         IEnumerable<Category> Categories { get; }
+
+        Product GetProduct(int productId);
+        string Add(Product item);
+        string Remove(int id);
+        string Update(Product product);
     }
             
 }

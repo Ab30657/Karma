@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace ShoeStore.WebUI.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : ApiController
     {
         // GET: Admin
         IProductRepos repos;
@@ -17,10 +17,30 @@ namespace ShoeStore.WebUI.Controllers
             repos = repoParam;
         }
 
-        public ActionResult Index()
+        public IEnumerable<Product> GetAllProducts()
         {
-            IEnumerable<Product> products = repos.Products;
-            return View(products);
+            return repos.Products;
         }
+
+        public Product GetProduct(int id)
+        {
+            return repos.GetProduct(id);
+        }
+
+        public string PutProduct(Product item)
+        {
+            return repos.Update(item);
+        }
+
+        public string DeleteProduct(int id)
+        {
+            return repos.Remove(id);
+        }
+
+        public string PostProduct(Product product)
+        {
+            return repos.Add(product);
+        }
+
     }
 }
